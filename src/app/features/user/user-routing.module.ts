@@ -8,6 +8,8 @@ import { EditEmployeeComponent } from "./components/edit-employee/edit-employee.
 import { LeaveComponent } from "./components/leave/leave.component";
 import { AddLeaveComponent } from "./components/add-leave/add-leave.component";
 import { EditLeaveComponent } from "./components/edit-leave/edit-leave.component";
+import { RegistrationComponent } from "./components/registration/registration.component";
+import { LoginComponent } from "./components/login/login.component";
 
 
 const routes: Routes = [
@@ -16,6 +18,8 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'employee', pathMatch: 'full' },
             { path: 'employee', component: EmployeeComponent },
+            { path: 'login', component: LoginComponent },
+            { path: 'registration', component: RegistrationComponent },
             { path: 'employee/add', component: AddEmployeeComponent },
             { path: 'employee/update', component: EditEmployeeComponent },
             { path: 'leave', component: LeaveComponent },

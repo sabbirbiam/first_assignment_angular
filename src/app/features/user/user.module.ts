@@ -14,6 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LeaveComponent } from './components/leave/leave.component';
 import { AddLeaveComponent } from './components/add-leave/add-leave.component';
 import { EditLeaveComponent } from './components/edit-leave/edit-leave.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
     declarations: [
         UserComponent,
@@ -23,6 +25,8 @@ import { EditLeaveComponent } from './components/edit-leave/edit-leave.component
         LeaveComponent,
         AddLeaveComponent,
         EditLeaveComponent,
+        RegistrationComponent,
+        LoginComponent,
     ],
     imports: [
         CommonModule,   

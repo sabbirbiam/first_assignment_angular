@@ -1,0 +1,198 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <h6 class="card-header">User Registation</h6>
+        <a
+          class="reference-button add-button mt-1 mb-2 mt-sm-2"
+          id="employeeAdd"
+          mat-raised-button
+          routerLink="/employee"
+        >
+          <span>Go Back</span>
+        </a>
+        <div class="card-body">
+          <form
+            [formGroup]="registrationForm"
+            autocomplete="off"
+            (ngSubmit)="onSubmit()"
+          >
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Name</label>
+                  </div>
+
+                  <div class="col-md-8">
+                    <span
+                      *ngIf="
+                        registrationForm.get('name').touched &&
+                        registrationForm.get('name').hasError('name')
+                      "
+                      class="text-danger"
+                    >
+                      Required Name</span
+                    >
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="name"
+                        name="name"
+                        placeholder="User Name"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Email</label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="email"
+                        name="email"
+                        placeholder="Emial"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Username</label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="username"
+                        name="username"
+                        placeholder="User Name"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label">Gender</label>
+                  <div class="col-md-8">
+                    <label
+                      class="
+                        custom-control custom-radio
+                        d-inline-block
+                        pr-base-double
+                      "
+                    >
+                      <input
+                        class="custom-control-input"
+                        name="gender"
+                        type="radio"
+                        [value]="1"
+                        formControlName="gender"
+                      />
+                      <span class="custom-control-label text-nowrap">Male</span>
+                    </label>
+                    <label class="custom-control custom-radio d-inline-block">
+                      <input
+                        class="custom-control-input"
+                        name="gender"
+                        type="radio"
+                        [value]="2"
+                        formControlName="gender"
+                      />
+                      <span class="custom-control-label text-nowrap"
+                        >Female</span
+                      >
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>DOB</label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input
+                          class="form-control"
+                          placeholder="yyyy-mm-dd"
+                          name="dob"
+                          formControlName="dob"
+                          ngbDatepicker
+                          #d="ngbDatepicker"
+                        />
+                        <div class="input-group-append">
+                          <button
+                            class="btn btn-outline-secondary calendar"
+                            (click)="d.toggle()"
+                            type="button"
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Password</label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        class="form-control"
+                        formControlName="password"
+                        name="password"
+                        placeholder="Password"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Confirm Password</label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        class="form-control"
+                        formControlName="cpassword"
+                        name="cpassword"
+                        placeholder="User Name"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-block btn-primary" type="submit">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
