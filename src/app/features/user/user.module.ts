@@ -7,24 +7,12 @@ import { StructureModule } from '../structure/structure.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxBootstrapConfirmModule } from 'ngx-bootstrap-confirm';
 import { ChartsModule } from 'ng2-charts';
-import { EmployeeComponent } from './components/employee/employee.component';
-import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
-import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LeaveComponent } from './components/leave/leave.component';
-import { AddLeaveComponent } from './components/add-leave/add-leave.component';
-import { EditLeaveComponent } from './components/edit-leave/edit-leave.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 @NgModule({
     declarations: [
         UserComponent,
-        EmployeeComponent,
-        AddEmployeeComponent,
-        EditEmployeeComponent,
-        LeaveComponent,
-        AddLeaveComponent,
-        EditLeaveComponent,
         RegistrationComponent,
         LoginComponent,
     ],
