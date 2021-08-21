@@ -10,9 +10,9 @@ export class AuthService {
 
   constructor(private apiService: BaseDataService) { }
 
-  public authLogin(username, password) {
+  public authLogin(email, password) {
    let params = {
-     username,
+     email,
      password,
    };
     return this.apiService.request('post', `login`, params);

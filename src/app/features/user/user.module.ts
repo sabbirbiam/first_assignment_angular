@@ -10,11 +10,13 @@ import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
+import { StoriesComponent } from './components/stories/stories.component';
 @NgModule({
     declarations: [
         UserComponent,
         RegistrationComponent,
         LoginComponent,
+        StoriesComponent,
     ],
     imports: [
         CommonModule,   

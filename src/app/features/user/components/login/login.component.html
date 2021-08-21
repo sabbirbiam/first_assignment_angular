@@ -9,11 +9,11 @@
           <p class="login-box-msg">Sign in to start your session</p>
   
           <form [formGroup]="saveForm"  autocomplete="off" (ngSubmit)="onSubmit()">
-            <span *ngIf="saveForm.get('username').touched && saveForm.get('username').hasError('required')"
+            <span *ngIf="saveForm.get('email').touched && saveForm.get('email').hasError('required')"
               class="text-danger">
               Required</span>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" formControlName="username" name="username" placeholder="Username">
+              <input type="text" class="form-control" formControlName="email" name="email" placeholder="Email">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -32,13 +32,23 @@
                 </div>
               </div>
             </div>
-           
+            <div class="row">
+              
+              <!-- /.col -->
+              <div class="col-4">
+                <button class="btn btn-block btn-primary" type="submit" >
+                 Sign In
+                </button>
+                <!-- <button type="submit" class="btn btn-primary btn-block">Sign In</button> -->
+              </div>
+              <!-- /.col -->
+            </div>
           </form>
           <p class="mb-1">
             <!-- <a [routerLink]="['/user/dashboard']">I forgot my password</a> -->
           </p>
           <p class="mb-0">
-            <a [routerLink]="['/user/registration']" class="text-center">Register a new membership</a>
+            <a [routerLink]="['/auth/registration']" class="text-center">Register a new membership</a>
           </p>
         </div>
         <!-- /.login-card-body -->

@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { UserComponent } from './user.component';
 import { RegistrationComponent } from "./components/registration/registration.component";
 import { LoginComponent } from "./components/login/login.component";
+import { AuthGuard } from "src/app/core/guard/auth-guard";
+import { StoriesComponent } from "./components/stories/stories.component";
 
 
 const routes: Routes = [
@@ -14,6 +16,7 @@ const routes: Routes = [
             // { path: 'employee', component: EmployeeComponent },
             { path: 'login', component: LoginComponent },
             { path: 'registration', component: RegistrationComponent },
+            { path: 'stories', canActivate: [AuthGuard], component: StoriesComponent },
             // { path: 'employee/add', component: AddEmployeeComponent },
             // { path: 'employee/update', component: EditEmployeeComponent },
             // { path: 'leave', component: LeaveComponent },

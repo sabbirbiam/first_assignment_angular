@@ -74,21 +74,26 @@ export class WebStorageService {
     return JSON.parse(window.localStorage.getItem('user'));
   }
 
-  public isAdmin(){
+  public isAdmin() {
     let userObj = this.getUser();
-    if (this.getCookie() && userObj &&  userObj.role.includes('Admin')) {
+    // debugger;
+    if (this.getCookie() && userObj && userObj.type.includes('admin')) {
       return true;
     }
-    else{
+    else {
       return false;
     }
   }
-  public isUser(){
+  public isUser() {
     let userObj = this.getUser();
-    if (this.getCookie() && userObj &&  userObj.role.includes('User')) {
+    console.log("userObj", userObj);
+    // return userObj;
+    if (this.getCookie() && userObj && userObj.type.includes('user')) {
+      // console.log("if");
       return true;
     }
-    else{
+    else {
+      // console.log("else");
       return false;
     }
   }

@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   private createForm(): void {
     this.saveForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
@@ -41,15 +41,17 @@ export class LoginComponent implements OnInit {
       return;
     
     const formValue = this.saveForm.value
-    this.authService.authLogin(formValue.username, formValue.password).subscribe(result=>{
-      console.log("result", result);
+    this.authService.authLogin(formValue.email, formValue.password).subscribe(result=>{
+      console.log("result", result["access_token"]);
       // const responseData: LoginResponse = JSON.parse(JSON.stringify(result));
       // if (responseData.data.isSuccess){
       //   this.commonService.toastSuccess(responseData.message);
-      //   this.webStorageService.setCookie()
-      //   this.webStorageService.saveToken(responseData.data.token);
-      //   this.webStorageService.saveUser(responseData.data);
-      //   window.location.reload();
+        this.webStorageService.setCookie();
+        this.webStorageService.saveToken(result["access_token"]);
+        this.webStorageService.saveUser(result["user"]);
+        this.router.navigate(['/stories']);
+
+        // window.location.reload();
       // }else{
       //   this.commonService.toastError(responseData.message);
       // }
