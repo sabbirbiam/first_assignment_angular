@@ -11,12 +11,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { StoriesComponent } from './components/stories/stories.component';
+import { StoryCreateComponent } from './components/story-create/story-create.component';
 @NgModule({
     declarations: [
         UserComponent,
         RegistrationComponent,
         LoginComponent,
         StoriesComponent,
+        StoryCreateComponent,
     ],
     imports: [
         CommonModule,   

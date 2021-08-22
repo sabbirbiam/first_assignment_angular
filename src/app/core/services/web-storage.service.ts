@@ -86,7 +86,7 @@ export class WebStorageService {
   }
   public isUser() {
     let userObj = this.getUser();
-    console.log("userObj", userObj);
+    // console.log("userObj", userObj);
     // return userObj;
     if (this.getCookie() && userObj && userObj.type.includes('user')) {
       // console.log("if");

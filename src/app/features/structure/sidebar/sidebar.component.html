@@ -48,11 +48,18 @@
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="storage.isUser()">
-                    <a [routerLink]="['/screen-list']" class="nav-link">
+                    <a [routerLink]="['/stories']" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Screen List
-
+                           Stories
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="storage.isUser()">
+                    <a [routerLink]="['/stories/add']" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                           Add New Stories 
                         </p>
                     </a>
                 </li>

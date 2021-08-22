@@ -50,8 +50,9 @@ export class LoginComponent implements OnInit {
         this.webStorageService.saveToken(result["access_token"]);
         this.webStorageService.saveUser(result["user"]);
         this.router.navigate(['/stories']);
-
         // window.location.reload();
+
+
       // }else{
       //   this.commonService.toastError(responseData.message);
       // }
