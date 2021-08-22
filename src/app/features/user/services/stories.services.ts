@@ -17,4 +17,8 @@ export class StoriesService {
     return this.apiService.request('POST', `stories/create-stories`, params);
   }
 
+  public updateStories(params) {
+    return this.apiService.request('POST', `stories/update-stories`, params);
+  }
+
 }

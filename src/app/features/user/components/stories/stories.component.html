@@ -3,12 +3,8 @@
     <div class="col-md-12">
       <div class="card">
         <h6 class="card-header">Employee List</h6>
-        <a
-          class="reference-button add-button mt-1 mb-2 mt-sm-2"
-          id="storiesAdd"
-          mat-raised-button
-          routerLink="/stories/add"
-        >
+        <a class="reference-button add-button mt-1 mb-2 mt-sm-2" id="storiesAdd" mat-raised-button
+          routerLink="/stories/add">
           <span>Add New Story</span>
         </a>
 
@@ -24,11 +20,7 @@
                           <label>Search Story</label>
                         </div>
                         <div class="col-md-6">
-                          <input
-                            type="number"
-                            class="form-control"
-                            name="pageIndex"
-                          />
+                          <input type="number" class="form-control" name="pageIndex" />
                         </div>
                       </div>
                     </div>
@@ -75,18 +67,29 @@
                 <tr>
                   <td>
                     Comments:
-                    <tr *ngFor="let comm of story.comment">
-                      <td>{{ comm.comments }}</td>
-                      <td *ngIf="loginUser.id == story.user_id">
-                        <button
-                          style="background-color: red; color: white"
-                          class="btn btn-sm"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
+                <tr *ngFor="let comm of story.comment">
+                  <td>{{ comm.comments }}</td>
+                  <td *ngIf="loginUser.id == story.user_id">
+                    <button style="background-color: red; color: white" class="btn btn-sm">
+                      Delete
+                    </button>
                   </td>
+                </tr>
+                </td>
+                </tr>
+
+                <tr>
+                  <td *ngIf="loginUser.id == story.user_id">
+                    <button style="background-color: green; color: white" class="btn btn-sm"
+                      (click)="onClickEdit(story)">
+                      Edit Story
+                    </button>
+                    &nbsp;
+                    <button style="background-color: red; color: white" class="btn btn-sm">
+                      Delete Story
+                    </button>
+                  </td>
+
                 </tr>
               </table>
               &nbsp; &nbsp;

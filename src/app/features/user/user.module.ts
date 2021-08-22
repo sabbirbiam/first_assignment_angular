@@ -12,6 +12,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { StoriesComponent } from './components/stories/stories.component';
 import { StoryCreateComponent } from './components/story-create/story-create.component';
+import { StoryEditComponent } from './components/story-edit/story-edit.component';
 @NgModule({
     declarations: [
         UserComponent,
@@ -19,6 +20,7 @@ import { StoryCreateComponent } from './components/story-create/story-create.com
         LoginComponent,
         StoriesComponent,
         StoryCreateComponent,
+        StoryEditComponent,
     ],
     imports: [
         CommonModule,   

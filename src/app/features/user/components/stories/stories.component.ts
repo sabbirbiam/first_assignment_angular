@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataComService } from 'src/app/shared/services/data-com.service';
 import { Stories } from '../../model/stories-model';
 import { User } from '../../model/user-model';
 import { StoriesService } from '../../services/stories.services';
@@ -13,7 +15,9 @@ export class StoriesComponent implements OnInit {
   stroiesList: Stories[];
   loginUser: User;
   constructor(
-    private storiesService: StoriesService
+    private storiesService: StoriesService,
+    private dataCom: DataComService,
+    private router: Router
   ) {
     this.stroiesList = new Array<Stories>();
     this.loginUser = new User();
@@ -43,6 +47,13 @@ export class StoriesComponent implements OnInit {
       
 
     })
+  }
+
+  public onClickEdit(row) {
+
+    console.log("row", row);
+    this.dataCom.setPassedItemData(row);
+    this.router.navigate(['/stories/edit']);
   }
 
 }

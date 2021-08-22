@@ -7,6 +7,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { AuthGuard } from "src/app/core/guard/auth-guard";
 import { StoriesComponent } from "./components/stories/stories.component";
 import { StoryCreateComponent } from "./components/story-create/story-create.component";
+import { StoryEditComponent } from "./components/story-edit/story-edit.component";
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
             { path: 'registration', component: RegistrationComponent },
             { path: 'stories', canActivate: [AuthGuard], component: StoriesComponent },
             { path: 'stories/add', canActivate: [AuthGuard], component: StoryCreateComponent },
+            { path: 'stories/edit', canActivate: [AuthGuard], component: StoryEditComponent },
             // { path: 'employee/add', component: AddEmployeeComponent },
             // { path: 'employee/update', component: EditEmployeeComponent },
             // { path: 'leave', component: LeaveComponent },
