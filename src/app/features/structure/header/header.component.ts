@@ -8,17 +8,9 @@ import { WebStorageService } from 'src/app/core/services/web-storage.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( ) { }
-  username = "";
-  usernameType = "";
+  constructor(public webStorageService:WebStorageService) { }
+
   ngOnInit(): void {
-    // this.username = this.webStorageService.getUser().username;
-    // console.log("username", this.username);
-    // if(this.webStorageService.isAdmin()){
-    //   this.usernameType = "Admin"; 
-    // }else{
-    //   this.usernameType = "User";
-    // }
   }
 
 }

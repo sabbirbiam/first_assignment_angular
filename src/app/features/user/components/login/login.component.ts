@@ -42,15 +42,12 @@ export class LoginComponent implements OnInit {
     
     const formValue = this.saveForm.value
     this.authService.authLogin(formValue.email, formValue.password).subscribe(result=>{
-      console.log("result", result["access_token"]);
-      // const responseData: LoginResponse = JSON.parse(JSON.stringify(result));
-      // if (responseData.data.isSuccess){
-      //   this.commonService.toastSuccess(responseData.message);
+      
         this.webStorageService.setCookie();
         this.webStorageService.saveToken(result["access_token"]);
         this.webStorageService.saveUser(result["user"]);
-        this.router.navigate(['/stories']);
-        // window.location.reload();
+        // this.router.navigate(['/stories']);
+        window.location.reload();
 
 
       // }else{

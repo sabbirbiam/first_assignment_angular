@@ -47,7 +47,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item" *ngIf="storage.isUser()">
+                <li class="nav-item" *ngIf="storage.isUser() || storage.isAdmin()">
                     <a [routerLink]="['/stories']" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -64,10 +64,10 @@
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="storage.isAdmin()">
-                    <a [routerLink]="['/project']" class="nav-link">
+                    <a [routerLink]="['/users']" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Project
+                            User
                         </p>
                     </a>
                 </li>

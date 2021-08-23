@@ -7,30 +7,22 @@ import { BaseDataService } from 'src/app/shared/base-data.services';
 export class RegistrationService {
 
   constructor(private apiService: BaseDataService) { }
-  
-  public getEmployeeist(){
-    // return this.apiService.get("employee/get-all-employee/12/14");
-    return this.apiService.get(`employee/get-all-employee`);
-  }
 
-  public getlist(){
-    // return this.apiService.get("employee/get-all-employee/12/14");
+  public getlist() {
     return this.apiService.get(`get-all`);
   }
 
-  public getEmployeeistByPagination(pageIndex: number, pageSize: number){ 
-    return this.apiService.get(`employee/get-all-employee-pagination/${pageIndex}/${pageSize}`);
+  public getAllUserlist() {
+    return this.apiService.get(`get-all-user`);
   }
 
-  public saveProject(params) {
-    return this.apiService.request('POST', `employee/create-employee`, params);
+  public updateUserStatus(id) {
+    return this.apiService.get(`update-user-status/${id}`);
   }
 
-  public updateProject(params) {
-    return this.apiService.request("PUT", 'employee/update-employee', params)
+  public saveUser(params) {
+    return this.apiService.request('POST', `register`, params);
   }
 
-  public deleteEmployee(id) {
-    return this.apiService.request("DELETE", `employee/delete-employee-by-id/${id}`);
-  } 
+
 }

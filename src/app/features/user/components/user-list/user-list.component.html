@@ -1,0 +1,101 @@
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="card">
+          <h6 class="card-header">Employee List</h6>
+          <!-- <a class="reference-button add-button  mt-1 mb-2 mt-sm-2" id="employeeAdd" mat-raised-button
+            routerLink="/employee/add"> -->
+            <span>Add New Employee</span>
+          <!-- </a> -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Page</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="number" class="form-control" name="pageIndex"  />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <label>Page Size</label>
+                          </div>
+                          <div class="col-md-5">
+                            <input type="number" class="form-control" name="pageSize"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="col-md-4">
+                  <div class="form-group">
+                   <button class="btn btn-primary">Search</button>
+                  </div>
+                </div>
+  
+  
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class='row'>
+              <div class='col-md-2'>Filter by:</div>
+              <div class='col-md-4'>
+                <input type='text'
+                [(ngModel)]='listFilter'  />
+              </div>
+            </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th style="width: 10px">Serial</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Username</th>
+                  <th>Gender</th>
+                  <th>Dob</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of userListSearch; let i = index">
+                  <td>{{ i+1 }}</td>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.phone }}</td>
+                  <td>{{ user.username }}</td>
+                  <td>{{ user.gender == 1 ? "Male" : "Female" }}</td>
+                  <td>{{ user.dob |date }}</td>
+                  <td><button class="btn btn-sm" (click)="onClickUserStatus(user.id)"
+                    style="background-color: red; color: white">
+                      {{user.status == 1 ? "Block User" : "Unblock User"}}
+                    </button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+  
+      </div>
+    </div>
+  </div>

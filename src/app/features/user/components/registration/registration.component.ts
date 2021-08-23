@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommonService } from 'src/app/shared/services/common.service';
 import { RegistrationService } from '../../services/registration.services';
 
 @Component({
@@ -13,7 +15,9 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private regService: RegistrationService
+    private regService: RegistrationService,
+    private commonService: CommonService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -38,57 +42,35 @@ export class RegistrationComponent implements OnInit {
    */
      public onSubmit(): void {
     
-      this.regService.getlist().subscribe(result => {
-        debugger;
-        console.log("result", result);
-        
-      })
       // debugger;
-    //   if (!this.saveForm.valid) 
-    //   {
-    //     this.commonService.toastWarning("Please Enter the mandatory fields");
-    //     return;
-    //   }
-      
-  
-    //   const firstName = this.saveForm.value.firstName;
-    //   const middleName = this.saveForm.value.middleName;
-    //   const lastName = this.saveForm.value.lastName;
-    //   const designation = this.saveForm.value.designation;
-    //   const department = this.saveForm.value.department;
-    //   // debugger;
-    //   const joiningDate = this.saveForm.value.joiningDate
-    //   ? new Date(
-    //       this.saveForm.value.joiningDate.year,
-    //       this.saveForm.value.joiningDate.month - 1,
-    //       this.saveForm.value.joiningDate.day
-    //     )
-    //   : null;
-    // const dob = this.saveForm.value.dob
-    //   ? new Date(
-    //       this.saveForm.value.dob.year,
-    //       this.saveForm.value.dob.month - 1,
-    //       this.saveForm.value.dob.day
-    //     )
-    //   : null;
-  
-    //   let saveObj = {
-    //     firstName: firstName,
-    //     middleName: middleName,
-    //     lastName: lastName,
-    //     designation: designation,
-    //     department: department ? parseInt(department) : null ,
-    //     joiningDate: joiningDate ? this.commonService.getDateDashFormate(joiningDate) : null,
-    //     dob: dob ? this.commonService.getDateDashFormate(dob) : null,
-    //   }
-    //   this.employeeService.saveProject(saveObj).subscribe(result => {
-    //     const responseData = JSON.parse(JSON.stringify(result));
-    //     if (responseData.success) {
-    //       this.commonService.toastSuccess(responseData.message);
-    //       this.saveForm.reset();
-    //       this.router.navigate(['/employee']); 
-    //     }
-    //   });
+
+      if (!this.registrationForm.valid) 
+      {
+        this.commonService.toastWarning("Please Enter the mandatory fields");
+        return;
+      }
+    
+      debugger;
+      const dob = this.registrationForm.value.dob
+      ? new Date(
+          this.registrationForm.value.dob.year,
+          this.registrationForm.value.dob.month - 1,
+          this.registrationForm.value.dob.day
+        )
+      : null;
+      let saveObj = {
+        name:  this.registrationForm.value.name,
+        email:  this.registrationForm.value.email,
+        username:  this.registrationForm.value.username,
+        phone:  this.registrationForm.value.phone,
+        gender:  this.registrationForm.value.gender,
+        dob: dob
+      }
+      this.regService.saveUser(saveObj).subscribe(result => {
+        debugger;
+        const responseData = JSON.parse(JSON.stringify(result));
+        this.router.navigate(['/login']); 
+      });
     }
 
 

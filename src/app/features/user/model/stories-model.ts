@@ -1,4 +1,4 @@
-import { Comments } from "./commet-model";
+import { PostComments } from "./commet-model";
 import { User } from "./user-model";
 
 export class Stories {
@@ -6,7 +6,7 @@ export class Stories {
   id: number;
   dob: Date;
   blocked: number;
-  comment: Comments;
+  comment: PostComments[];
   section: string;
   story: string;
   storycaption: string;
@@ -31,6 +31,6 @@ export class Stories {
     this.dob = options.dob ? new Date(options.dob) : null;
     this.created_at = options.created_at ? new Date(options.created_at) : null;
     this.tags = options.tags;
-    this.comment = (options.comment) ? options.comment : new Array<Comments>();
+    this.comment = (options.comment) ? options.comment : new Array<PostComments>();
   }
 }
