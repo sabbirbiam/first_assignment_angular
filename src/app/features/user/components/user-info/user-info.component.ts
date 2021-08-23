@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebStorageService } from 'src/app/core/services/web-storage.service';
 
 @Component({
   selector: 'app-user-info',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public webStorageService: WebStorageService
+  ) { }
 
   ngOnInit(): void {
   }
