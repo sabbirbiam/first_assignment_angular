@@ -33175,3 +33175,13 @@ button.toast-close-button {
 .cursor-pointer{
   cursor: pointer !important;
 }
+
+.circle {
+  border-radius: 8px;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }

@@ -9,13 +9,19 @@ export class StoriesService {
   constructor(private apiService: BaseDataService) { }
   
   public getAllStories(){
-    // return this.apiService.get("employee/get-all-employee/12/14");
     return this.apiService.get(`stories/get-all-stories`);
+  }
+
+  public getAllHomeStories(){
+    return this.apiService.get(`get-all-stories-home`);
   }
   
   public getAllStoriesUser(){
-    // return this.apiService.get("employee/get-all-employee/12/14");
     return this.apiService.get(`stories/get-all-stories-user`);
+  }
+
+  public getAllStoriesSearch(params){
+    return this.apiService.request('POST', `stories/get-all-stories-search`, params);
   }
 
 

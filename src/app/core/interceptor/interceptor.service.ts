@@ -22,12 +22,6 @@ export class Interceptor implements HttpInterceptor {
         public spinnerService: SpinnerService,
     ) { }
     intercept(request: HttpRequest<any>, next: HttpHandler) {
-        // if (request.url.includes('/core/auth/companies') || request.url.includes('/core/auth/login')) {
-        // } else {
-        //     request = request.clone({
-        //         headers: request.headers.set('TOKEN', localStorage.NAHAL_IT_AuthToken)
-        //     })
-        // }
         return this.sendRequest(request, next);
     }
 

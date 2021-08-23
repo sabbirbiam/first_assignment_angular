@@ -25,9 +25,10 @@
                         </div>
                         <div class="col-md-6">
                           <input
-                            type="number"
+                            type="text"
                             class="form-control"
-                            name="pageIndex"
+                            name="serchValue"
+                            [(ngModel)]="serchValue"
                           />
                         </div>
                       </div>
@@ -38,14 +39,14 @@
 
               <div class="col-md-4">
                 <div class="form-group">
-                  <button class="btn btn-primary">Search</button>
+                  <button class="btn btn-primary" (click)="getStoriesBySearch()">Search</button>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="card-body">
-            dfdf{{ this.stroiesList.length }}
+            Nuber of Stories :{{ this.stroiesList.length }}
 
             <ng-container *ngFor="let story of stroiesList; let i = index">
               <!-- sdsd -->
@@ -69,6 +70,16 @@
 
                 <tr>
                   <td>Story: {{ story.story }}</td>
+                </tr>
+
+                <tr>
+                  <td>Image Title: {{ story.storycaption }}</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    Story Image:<img width="100%"  [src]="story.storyimage" class="circle">
+                  </td>
                 </tr>
 
                 <tr>

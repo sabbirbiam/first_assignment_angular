@@ -11,6 +11,7 @@ import { StoryEditComponent } from "./components/story-edit/story-edit.component
 import { UserListComponent } from "./components/user-list/user-list.component";
 import { LogoutComponent } from "./components/logout/logout.component";
 import { UserInfoComponent } from "./components/user-info/user-info.component";
+import { StoryHomeComponent } from "./components/story-home/story-home.component";
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'userinfo', pathMatch: 'full' },
             { path: 'logout',  component: LogoutComponent },
             { path: 'login', component: LoginComponent },
+            { path: 'home', component: StoryHomeComponent },
             { path: 'registration', component: RegistrationComponent },
             { path: 'userinfo', canActivate: [AuthGuard], component: UserInfoComponent },
             { path: 'stories', canActivate: [AuthGuard], component: StoriesComponent },

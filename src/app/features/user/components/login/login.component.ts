@@ -43,6 +43,10 @@ export class LoginComponent implements OnInit {
     const formValue = this.saveForm.value
     this.authService.authLogin(formValue.email, formValue.password).subscribe(result=>{
       
+      // debugger;
+      // console.log("Console", result);
+      
+      // return;
         this.webStorageService.setCookie();
         this.webStorageService.saveToken(result["access_token"]);
         this.webStorageService.saveUser(result["user"]);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -18,13 +18,16 @@ export class StoryEditComponent implements OnInit {
   loginUser: User;
   subscription: Subscription;
 
+  imageUrl:any;
+
 
   constructor(
     private commonService: CommonService,
     private fb: FormBuilder,
     private storiesService: StoriesService,
     private router: Router,
-    private dataCom: DataComService
+    private dataCom: DataComService,
+    private cd: ChangeDetectorRef
   ) {
     this.loginUser = new User();
   }
@@ -60,6 +63,7 @@ export class StoryEditComponent implements OnInit {
         storyimage: res.storyimage,
         user_id: res.user_id,
       });
+      this.imageUrl =  res.storyimage;
       console.log('this.storyForm.value', this.storyForm.value);
     });
   }
@@ -99,6 +103,31 @@ export class StoryEditComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+   /**
+   * uploadFile
+   */
+    public uploadFile(event): void {
+
+      let reader = new FileReader(); // HTML5 FileReader API
+      let file = event.target.files[0];
+      if (event.target.files && event.target.files[0]) {
+        reader.readAsDataURL(file);
+  
+        // When file uploads set it to file formcontrol
+        reader.onload = () => {
+          this.imageUrl = reader.result;
+          this.storyForm.patchValue({
+            storyimage: reader.result
+          });
+          // this.editFile = false;
+          // this.removeUpload = true;
+        }
+        // ChangeDetectorRef since file is loading outside the zone
+        this.cd.markForCheck();        
+      }
+      
+    }
 
 
 }

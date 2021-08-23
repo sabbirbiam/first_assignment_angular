@@ -3,63 +3,18 @@
     <div class="row">
       <div class="col-md-12 ">
         <div class="card">
-          <h6 class="card-header">Employee List</h6>
+          <h6 class="card-header">User List</h6>
           <!-- <a class="reference-button add-button  mt-1 mb-2 mt-sm-2" id="employeeAdd" mat-raised-button
             routerLink="/employee/add"> -->
-            <span>Add New Employee</span>
+            <!-- <span>Add New Employee</span> -->
           <!-- </a> -->
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <label>Page</label>
-                          </div>
-                          <div class="col-md-6">
-                            <input type="number" class="form-control" name="pageIndex"  />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="col-md-4">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-md-7">
-                            <label>Page Size</label>
-                          </div>
-                          <div class="col-md-5">
-                            <input type="number" class="form-control" name="pageSize"/>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="col-md-4">
-                  <div class="form-group">
-                   <button class="btn btn-primary">Search</button>
-                  </div>
-                </div>
-  
-  
-              </div>
-            </div>
-          </div>
+        
           <div class="card-body">
             <div class='row'>
               <div class='col-md-2'>Filter by:</div>
               <div class='col-md-4'>
                 <input type='text'
+                placeholder="Search by user name"
                 [(ngModel)]='listFilter'  />
               </div>
             </div>

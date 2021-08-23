@@ -50,7 +50,7 @@ export class RegistrationComponent implements OnInit {
         return;
       }
     
-      debugger;
+      // debugger;
       const dob = this.registrationForm.value.dob
       ? new Date(
           this.registrationForm.value.dob.year,
@@ -64,10 +64,11 @@ export class RegistrationComponent implements OnInit {
         username:  this.registrationForm.value.username,
         phone:  this.registrationForm.value.phone,
         gender:  this.registrationForm.value.gender,
-        dob: dob
+        dob: dob,
+        password: this.registrationForm.value.password,
       }
       this.regService.saveUser(saveObj).subscribe(result => {
-        debugger;
+        // debugger;
         const responseData = JSON.parse(JSON.stringify(result));
         this.router.navigate(['/login']); 
       });

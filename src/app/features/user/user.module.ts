@@ -16,6 +16,7 @@ import { StoryEditComponent } from './components/story-edit/story-edit.component
 import { UserListComponent } from './components/user-list/user-list.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { StoryHomeComponent } from './components/story-home/story-home.component';
 @NgModule({
     declarations: [
         UserComponent,
@@ -27,6 +28,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
         UserListComponent,
         LogoutComponent,
         UserInfoComponent,
+        StoryHomeComponent,
     ],
     imports: [
         CommonModule,   

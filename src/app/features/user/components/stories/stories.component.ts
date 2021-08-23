@@ -19,6 +19,9 @@ export class StoriesComponent implements OnInit {
   stroiesList: Stories[];
   loginUser: User;
   comments: String = "";
+
+  serchValue = "";
+
   constructor(
     private storiesService: StoriesService,
     private dataCom: DataComService,
@@ -211,6 +214,32 @@ export class StoriesComponent implements OnInit {
           }
         })
       }
+
+    })
+  }
+
+  public getStoriesBySearch() {
+
+    this.stroiesList = [];
+    let obj ={
+      serchValue: this.serchValue,
+      type: this.loginUser.type
+    }
+
+    this.storiesService.getAllStoriesSearch(obj).subscribe(result => {
+
+      console.log("result", result);
+      // debugger;
+      if (result["response"].code == 200) {
+        if (result["data"].length) {
+          result["data"].map(ele => {
+            this.stroiesList.push(new Stories(ele));
+          })
+        }
+      }
+
+      console.log("his.stroiesList", this.stroiesList);
+
 
     })
   }
