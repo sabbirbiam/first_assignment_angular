@@ -12,6 +12,8 @@ import { UserListComponent } from "./components/user-list/user-list.component";
 import { LogoutComponent } from "./components/logout/logout.component";
 import { UserInfoComponent } from "./components/user-info/user-info.component";
 import { StoryHomeComponent } from "./components/story-home/story-home.component";
+import { AuthGuardAdmin } from "src/app/core/guard/auth-guard-admin";
+import { UserupdateComponent } from "./components/userupdate/userupdate.component";
 
 
 const routes: Routes = [
@@ -27,7 +29,8 @@ const routes: Routes = [
             { path: 'stories', canActivate: [AuthGuard], component: StoriesComponent },
             { path: 'stories/add', canActivate: [AuthGuard], component: StoryCreateComponent },
             { path: 'stories/edit', canActivate: [AuthGuard], component: StoryEditComponent },
-            { path: 'users', canActivate: [AuthGuard], component: UserListComponent },
+            { path: 'users/update', canActivate: [AuthGuard], component: UserupdateComponent },
+            { path: 'users', canActivate: [AuthGuardAdmin], component: UserListComponent },
 
         ]
     }

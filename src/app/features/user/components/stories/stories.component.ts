@@ -17,10 +17,14 @@ import { StoriesService } from '../../services/stories.services';
 export class StoriesComponent implements OnInit {
 
   stroiesList: Stories[];
+  stroiesUserList: Stories[];
+  stroiesAll: Stories[];
   loginUser: User;
   comments: String = "";
 
   serchValue = "";
+
+  showuserstory: boolean = false;
 
   constructor(
     private storiesService: StoriesService,
@@ -28,21 +32,23 @@ export class StoriesComponent implements OnInit {
     private router: Router,
     private commonService: CommonService,
     private confirmationService: NgxBootstrapConfirmService,
-    public  webStorageService: WebStorageService,
+    public webStorageService: WebStorageService,
 
   ) {
     this.stroiesList = new Array<Stories>();
+    this.stroiesUserList = new Array<Stories>();
+    this.stroiesAll = new Array<Stories>();
     this.loginUser = new User();
     // this.webStorageService.isAdmin();
   }
 
   ngOnInit(): void {
 
-    if(this.webStorageService.isAdmin()) {
+    if (this.webStorageService.isAdmin()) {
       this.getStories();
-    }else if(this.webStorageService.isUser()) {
+    } else if (this.webStorageService.isUser()) {
       this.getStoriesUser();
-    }else {
+    } else {
       this.commonService.toastWarning("Invaild User");
     }
     this.loginUser = JSON.parse(localStorage.getItem('user'));
@@ -58,6 +64,7 @@ export class StoriesComponent implements OnInit {
         if (result["data"].length) {
           result["data"].map(ele => {
             this.stroiesList.push(new Stories(ele));
+            this.stroiesAll.push(new Stories(ele));
           })
         }
       }
@@ -70,6 +77,7 @@ export class StoriesComponent implements OnInit {
 
   private getStoriesUser() {
     this.stroiesList = [];
+    this.stroiesAll = [];
     this.storiesService.getAllStoriesUser().subscribe(result => {
 
       console.log("result", result);
@@ -78,6 +86,7 @@ export class StoriesComponent implements OnInit {
         if (result["data"].length) {
           result["data"].map(ele => {
             this.stroiesList.push(new Stories(ele));
+            this.stroiesAll.push(new Stories(ele));
           })
         }
       }
@@ -102,7 +111,7 @@ export class StoriesComponent implements OnInit {
   public onClickSaveComment(story: Stories) {
 
     console.log("story", story);
-    
+
     if (!this.comments) {
       this.commonService.toastWarning("Comment Can not be null");
       return;
@@ -134,13 +143,13 @@ export class StoriesComponent implements OnInit {
 
   }
 
-  public onClickDeleteComment(story: Stories,comments: PostComments[], id): void {
+  public onClickDeleteComment(story: Stories, comments: PostComments[], id): void {
 
     // debugger;
     console.log("comments", comments);
 
     // return;
-    
+
     let options = {
       title: 'Sure you want to delete this PostComments?',
       confirmLabel: 'Yes',
@@ -171,8 +180,8 @@ export class StoriesComponent implements OnInit {
     })
   }
 
-  public onClickDeleteStory( id): void {
-    
+  public onClickDeleteStory(id): void {
+
     let options = {
       title: 'Do you want to delete Story?',
       confirmLabel: 'Yes',
@@ -194,8 +203,8 @@ export class StoriesComponent implements OnInit {
     })
   }
 
-  public onClickMarkAsUnlisted( id): void {
-    
+  public onClickMarkAsUnlisted(id): void {
+
     let options = {
       title: 'Do you Unlisted Story?',
       confirmLabel: 'Yes',
@@ -221,7 +230,7 @@ export class StoriesComponent implements OnInit {
   public getStoriesBySearch() {
 
     this.stroiesList = [];
-    let obj ={
+    let obj = {
       serchValue: this.serchValue,
       type: this.loginUser.type
     }
@@ -242,6 +251,28 @@ export class StoriesComponent implements OnInit {
 
 
     })
+  }
+
+  /**
+   * onClickChngeStory
+   */
+  public onClickChngeStory(): void {
+
+    // debugger;
+    if (this.showuserstory) {
+      this.stroiesUserList = [];
+      this.stroiesAll.map(ele => {
+        if (ele.user_id == this.loginUser.id) {
+          this.stroiesUserList.push(ele);
+        }
+
+      })
+      this.stroiesList = [];
+      this.stroiesList = this.stroiesUserList;
+    }else {
+      this.stroiesList = [];
+      this.stroiesList = this.stroiesAll;
+    }
   }
 
 }

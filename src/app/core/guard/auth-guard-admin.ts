@@ -22,7 +22,7 @@ export class AuthGuardAdmin implements CanActivate {
     if (this.storage.getCookie() && userObj &&  userObj.role.includes('Admin')) {
       return true
     } else {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/stories']);
       return false;
     }
   }

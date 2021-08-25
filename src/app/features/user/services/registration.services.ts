@@ -24,5 +24,9 @@ export class RegistrationService {
     return this.apiService.request('POST', `register`, params);
   }
 
+  public updateUser(params, id) {
+    return this.apiService.request('POST', `update-user/${id}`, params);
+  }
+
 
 }

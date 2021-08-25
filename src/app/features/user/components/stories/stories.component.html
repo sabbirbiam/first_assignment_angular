@@ -39,15 +39,37 @@
 
               <div class="col-md-4">
                 <div class="form-group">
-                  <button class="btn btn-primary" (click)="getStoriesBySearch()">Search</button>
+                  <button
+                    class="btn btn-primary"
+                    (click)="getStoriesBySearch()"
+                  >
+                    Search
+                  </button>
                 </div>
               </div>
             </div>
           </div>
 
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Show Only Your Storries</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <input
+                type="checkbox"
+                class="form-control"
+                name="showuserstory"
+                [(ngModel)]="showuserstory"
+                [checked]="showuserstory"
+                (change)="showuserstory = $event.target.checked ? true: false;onClickChngeStory()"
+              />
+            </div>
+          </div>
+
           <div class="card-body">
             Nuber of Stories :{{ this.stroiesList.length }}
-
             <ng-container *ngFor="let story of stroiesList; let i = index">
               <!-- sdsd -->
               <!-- {{story.story}} -->
@@ -78,7 +100,11 @@
 
                 <tr>
                   <td>
-                    Story Image:<img width="100%"  [src]="story.storyimage" class="circle">
+                    Story Image:<img
+                      width="100%"
+                      [src]="story.storyimage"
+                      class="circle"
+                    />
                   </td>
                 </tr>
 
@@ -87,10 +113,18 @@
                     PostComments:
                     <tr *ngFor="let comm of story.comment">
                       <td>{{ comm.comments }}</td>
-                      <td *ngIf="loginUser.id == story.user_id || webStorageService.isAdmin()">
+                      <td
+                        *ngIf="
+                          loginUser.id == story.user_id ||
+                          webStorageService.isAdmin()
+                        "
+                      >
                         <button
                           style="background-color: red; color: white"
-                          class="btn btn-sm" (click)="onClickDeleteComment(story,story.comment, comm.id)"
+                          class="btn btn-sm"
+                          (click)="
+                            onClickDeleteComment(story, story.comment, comm.id)
+                          "
                         >
                           Delete
                         </button>
@@ -98,44 +132,49 @@
                     </tr>
                     &nbsp;
                     <tr *ngIf="webStorageService.isUser()">
-                     <td>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="row">
-                            <div class="col-md-5">
-                              <label>New Comment</label>
-                            </div>
-                            <div class="col-md-7">
-                              <div class="form-group">
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  name="comments"
-                                  placeholder="New Comment"
-                                  [(ngModel)]="comments"
-                                />
+                      <td>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="row">
+                              <div class="col-md-5">
+                                <label>New Comment</label>
+                              </div>
+                              <div class="col-md-7">
+                                <div class="form-group">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    name="comments"
+                                    placeholder="New Comment"
+                                    [(ngModel)]="comments"
+                                  />
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                     </td>
-                     
-                     <td>
-                      <button
-                        style="background-color: blueviolet; color: white"
-                        class="btn btn-sm" (click)="onClickSaveComment(story)"
-                      >
-                        Save
-                      </button>
-                    </td>
+                      </td>
+
+                      <td>
+                        <button
+                          style="background-color: blueviolet; color: white"
+                          class="btn btn-sm"
+                          (click)="onClickSaveComment(story)"
+                        >
+                          Save
+                        </button>
+                      </td>
                     </tr>
                   </td>
                 </tr>
 
                 <tr>
-                  <td >
-                    <button *ngIf="loginUser.id == story.user_id && webStorageService.isUser()"
+                  <td>
+                    <button
+                      *ngIf="
+                        loginUser.id == story.user_id &&
+                        webStorageService.isUser()
+                      "
                       style="background-color: green; color: white"
                       class="btn btn-sm"
                       (click)="onClickEdit(story)"
@@ -144,21 +183,31 @@
                     </button>
                     <!-- sss{{webStorageService.isAdmin()}} -->
                     &nbsp;
-                    <button *ngIf="loginUser.id == story.user_id && webStorageService.isUser()"
+                    <button
+                      *ngIf="
+                        loginUser.id == story.user_id &&
+                        webStorageService.isUser()
+                      "
                       style="background-color: red; color: white"
-                      class="btn btn-sm" (click)="onClickDeleteStory(story.id)"
+                      class="btn btn-sm"
+                      (click)="onClickDeleteStory(story.id)"
                     >
                       Delete Story
                     </button>
 
                     &nbsp;
                     <!-- sss{{story.blocked}} -->
-                    <button *ngIf="webStorageService.isAdmin()"
+                    <button
+                      *ngIf="webStorageService.isAdmin()"
                       style="background-color: rgb(47, 172, 255); color: white"
-                      class="btn btn-sm" (click)="onClickMarkAsUnlisted(story.id)"
-                    > 
-                     {{story.blocked == 1 ? 'Mark As Unlisted': 'Mark As Listed'}}
-                      
+                      class="btn btn-sm"
+                      (click)="onClickMarkAsUnlisted(story.id)"
+                    >
+                      {{
+                        story.blocked == 1
+                          ? "Mark As Unlisted"
+                          : "Mark As Listed"
+                      }}
                     </button>
                   </td>
                 </tr>

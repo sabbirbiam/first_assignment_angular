@@ -8,10 +8,12 @@ export class User {
   status: number;
   type: string;
   username: string;
+  phone: string;
 
   constructor(options: any = {}) {
     this.id = options.id || "";
     this.gender = options.gender || null;
+    this.phone = options.phone || null;
     this.name = options.name || "";
     this.email = options.email || "";
     this.status = options.status || null;

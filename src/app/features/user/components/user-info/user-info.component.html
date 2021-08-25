@@ -1,1 +1,14 @@
 Welcome <h1 *ngIf="webStorageService.isAdmin()">Admin</h1> <h1 *ngIf="webStorageService.isUser()">User</h1>
+
+<ng-container>
+User Name: {{loginUser.name}}
+
+<div class="row">
+    <div class="col-md-2">
+        <button class="btn btn-block btn-primary" (click)="updateUser()">
+            Update User
+        </button>
+    </div>
+</div>
+
+</ng-container>
